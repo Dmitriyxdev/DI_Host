@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>{% block title %}Вход{% endblock %}</title>
+
+  <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <div class="container auth-container">
+    <div class="auth-shell">
+      <div class="auth-header">
+        <div class="auth-brand">My Cloud</div>
+        <div class="muted auth-sub">Вход и регистрация</div>
+      </div>
+
+      {% block content %}{% endblock %}
+    </div>
+
+    <div class="footer auth-footer">
+      <span id="year"></span> • Flask + SQLite
+    </div>
+  </div>
+
+  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

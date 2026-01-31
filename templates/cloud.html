@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% block title %}Облако{% endblock %}
+
+{% block content %}
+<div class="grid">
+
+  <section class="card" style="grid-column: 1 / -1;">
+    <div class="card-title-row">
+      <h2>Загрузка файлов</h2>
+      <span class="badge">без сжатия</span>
+    </div>
+
+    <form method="post" action="{{ url_for('cloud_upload') }}" enctype="multipart/form-data">
+      <div class="upload-row">
+        <input id="fileInput" class="file-input" type="file" name="files" multiple />
+
+        <label for="fileInput" class="file-pick">
+          Выбрать файлы
+        </label>
+
+        <button type="submit" class="btn-primary">Загрузить</button>
+      </div>
+
+      <div class="muted upload-hint">
+        <!-- подсказка по желанию -->
+      </div>
+    </form>
+  </section>
+
+  <section class="card" style="grid-column: 1 / -1;">
+    <div class="card-title-row">
+      <h2>Файлы</h2>
+      <span class="badge">{{ files|length }}</span>
+    </div>
+
+    {% if not files %}
+      <p class="muted" style="margin:0;">Пока файлов нет.</p>
+    {% else %}
+      <div class="files">
+        {% for f in files %}
+        <div class="file-meta">
+
+  {% if f.mime and f.mime.startswith("image/") %}
+    <a class="file-preview" href="{{ url_for('cloud_download', file_id=f.id) }}">
+      <img
+        src="{{ url_for('cloud_view', file_id=f.id) }}"
+        alt="{{ f.orig_name }}"
+        loading="lazy"
+      />
+    </a>
+  {% endif %}
+
+  <div class="file-name">{{ f.orig_name }}</div>
+  <div class="file-sub muted">{{ f.size_bytes }} bytes • {{ f.created_at }}</div>
+</div>
+
+
+            <div class="file-actions">
+              <a class="btn-secondary" href="{{ url_for('cloud_download', file_id=f.id) }}">Скачать</a>
+
+              <form method="post" action="{{ url_for('cloud_delete', file_id=f.id) }}">
+                <button type="submit" class="btn-danger">Удалить</button>
+              </form>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </section>
+
+</div>
+{% endblock %}

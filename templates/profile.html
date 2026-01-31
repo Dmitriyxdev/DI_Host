@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}Профиль{% endblock %}
+
+{% block content %}
+<div class="grid">
+  <section class="card" style="grid-column: 1 / -1;">
+    <div class="card-title-row">
+      <h2>Профиль</h2>
+      <span class="badge">user</span>
+      
+    </div>
+<div class="profile-actions">
+  <a href="{{ url_for('profile_edit') }}" class="btn-link">
+    Редактировать профиль
+  </a>
+</div>
+
+    <div class="profile">
+      <div class="profile-row">
+        
+        <span class="profile-label">Логин</span>
+        <span class="profile-value">@{{ user.username }}</span>
+      </div>
+
+      <div class="profile-row">
+        <span class="profile-label">Создан</span>
+        
+        <span class="profile-value">{{ user.created_at }}</span>
+        
+      </div>
+    </div>
+  </section>
+</div>
+{% endblock %}

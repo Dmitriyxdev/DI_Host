@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>{% block title %}Сайт{% endblock %}</title>
+
+  <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+  <div class="container">
+
+    <header class="header">
+      <img
+        src="{{ url_for('static', filename='img/logo.png') }}"
+        alt="Логотип"
+        class="hero-logo"
+        width="1920"
+        height="420"
+        loading="eager"
+        decoding="async"
+      />
+    </header>
+
+    <nav class="top-nav" aria-label="Основное меню">
+        {% if user %}
+  <span class="brand-user muted">
+    {{ user.display_name or user.username }}
+  </span>
+{% endif %}
+      <div class="nav-left">
+        <span class="brand">DI Host</span>
+      </div>
+
+
+
+
+      <div class="nav-menu">
+        <a href="{{ url_for('index') }}" class="nav-item {% if active_page=='index' %}is-active{% endif %}">Главная</a>
+       <a href="{{ url_for('cloud') }}" class="nav-item {% if active_page=='cloud' %}is-active{% endif %}">Облако</a>
+
+
+        <div class="nav-item dropdown" id="settingsDropdown">
+          <button class="dropdown-toggle" type="button" aria-haspopup="true" aria-expanded="false">
+            Настройки
+          </button>
+
+          <div class="dropdown-menu" role="menu" aria-label="Настройки">
+  <a href="{{ url_for('profile') }}" role="menuitem">Профиль</a>
+  <a href="#theme" role="menuitem">Тема</a>
+
+  <form action="{{ url_for('logout') }}" method="post" style="margin:6px 0 0;">
+    <button type="submit" class="dropdown-logout">Выход</button>
+  </form>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <main class="shell">
+      <div class="hero">
+        {% block content %}{% endblock %}
+
+        <div class="footer">
+          <span id="year"></span> • DI
+        </div>
+      </div>
+    </main>
+
+  </div>
+
+  <script defer src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

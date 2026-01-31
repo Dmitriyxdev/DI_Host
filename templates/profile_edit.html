@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% block title %}Редактировать профиль{% endblock %}
+
+{% block content %}
+<div class="grid">
+  <section class="card" style="grid-column: 1 / -1; max-width:640px;">
+    <div class="card-title-row">
+      <h2>Редактирование профиля</h2>
+      <span class="badge">edit</span>
+    </div>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <div class="flash">
+          {% for cat, msg in messages %}
+            <div class="flash-item {% if cat=='ok' %}flash-ok{% endif %}">{{ msg }}</div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+
+    <form method="post" action="{{ url_for('profile_edit_post') }}">
+      <div class="form-col">
+        <label class="field">
+  <span class="field-label">Ваше Имя:</span>
+  <input
+    name="display_name"
+    type="text"
+    value="{{ user.display_name or '' }}"
+    maxlength="40"
+    autocomplete="name"
+    placeholder="Например: Андрей"
+  />
+</label>
+
+        
+        <label class="field">
+          <span class="field-label">Логин</span>
+          <input name="username" type="text" value="{{ user.username }}" minlength="3" maxlength="20" required />
+        </label>
+
+        <hr class="sep" />
+
+        <div class="muted" style="font-size:13px;">
+          Смена пароля (необязательно)
+        </div>
+
+        <label class="field">
+          <span class="field-label">Текущий пароль</span>
+          <input name="current_password" type="password" autocomplete="current-password" />
+        </label>
+
+        <label class="field">
+          <span class="field-label">Новый пароль</span>
+          <input name="new_password" type="password" autocomplete="new-password" minlength="6" />
+        </label>
+
+        <label class="field">
+          <span class="field-label">Повтор нового пароля</span>
+          <input name="new_password2" type="password" autocomplete="new-password" minlength="6" />
+        </label>
+
+        <div class="form-actions">
+          <a class="btn-link" href="{{ url_for('profile') }}">Отмена</a>
+          <button type="submit">Сохранить</button>
+        </div>
+      </div>
+    </form>
+  </section>
+</div>
+{% endblock %}
