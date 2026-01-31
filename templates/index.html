@@ -1,20 +1,48 @@
 {% extends "base.html" %}
-
 {% block title %}Главная{% endblock %}
 
 {% block content %}
-  <div class="grid">
-    <section class="card">
-      <div class="card-title-row">
-        <h2>Добрый день!</h2>
-        <span class="badge">2026 UI</span>
+  <div class="row g-3">
+    <div class="col-12">
+      <div class="card border-0 shadow-sm">
+        <div class="card-body p-4">
+          <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-2">
+            <div>
+              <h1 class="h4 mb-1">Добро пожаловать, {{ user.display_name or user.username }}.</h1>
+            </div>
+            <div class="d-flex gap-2">
+              <a href="{{ url_for('cloud') }}" class="btn btn-primary">Открыть облако</a>
+              <a href="{{ url_for('profile') }}" class="btn btn-outline-secondary">Профиль</a>
+            </div>
+          </div>
+        </div>
       </div>
+    </div>
 
-      <p class="muted" style="margin:0;">
-      ......
-      </p>
-    </section>
+    <div class="col-12 col-md-6">
+      <div class="card border-0 shadow-sm h-100">
+        <div class="card-body p-4">
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <div class="h6 mb-0">Быстрые действия</div>
+            <span class="badge text-bg-dark">Панель управления UI</span>
+          </div>
+          <div class="d-grid gap-2">
+            <a class="btn btn-outline-primary" href="{{ url_for('cloud') }}">Загрузить/скачать файлы</a>
+            <a class="btn btn-outline-secondary" href="{{ url_for('profile_edit') }}">Редактировать профиль</a>
+          </div>
+        </div>
+      </div>
+    </div>
 
-   
+    <div class="col-12 col-md-6">
+      <div class="card border-0 shadow-sm h-100">
+        <div class="card-body p-4">
+          <div class="h6 mb-2">Подсказка</div>
+          <div class="text-muted">
+            Для лучшего UX добавь ограничение размера загрузки и отображение размера файлов в KB/MB.
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 {% endblock %}

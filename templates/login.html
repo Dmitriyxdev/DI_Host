@@ -2,33 +2,27 @@
 {% block title %}Вход{% endblock %}
 
 {% block content %}
-<section class="card auth-card">
-  <div class="card-title-row">
-    <h2>Вход</h2>
-    <span class="badge">auth</span>
+  <div class="d-flex align-items-center justify-content-between mb-3">
+    <h1 class="h5 mb-0">Вход</h1>
+    <span class="badge text-bg-dark">auth</span>
   </div>
 
-  {% with messages = get_flashed_messages(with_categories=true) %}
-    {% if messages %}
-      <div class="flash">
-        {% for cat, msg in messages %}
-          <div class="flash-item">{{ msg }}</div>
-        {% endfor %}
-      </div>
-    {% endif %}
-  {% endwith %}
-
   <form method="post" action="{{ url_for('login_post') }}">
-    <div class="form-col">
-      <input name="username" type="text" placeholder="Логин" autocomplete="username" required />
-      <input name="password" type="password" placeholder="Пароль" autocomplete="current-password" required />
-      <button type="submit">Войти</button>
+    <div class="mb-3">
+      <label class="form-label">Логин</label>
+      <input name="username" type="text" class="form-control" autocomplete="username" required>
     </div>
+
+    <div class="mb-3">
+      <label class="form-label">Пароль</label>
+      <input name="password" type="password" class="form-control" autocomplete="current-password" required>
+    </div>
+
+    <button type="submit" class="btn btn-primary w-100">Войти</button>
   </form>
 
-  <p class="muted auth-link">
-    Нет аккаунта?
-    <a href="{{ url_for('register') }}" class="auth-a">Регистрация</a>
-  </p>
-</section>
+  <div class="text-center mt-3">
+    <span class="text-muted">Нет аккаунта?</span>
+    <a href="{{ url_for('register') }}" class="link-primary">Регистрация</a>
+  </div>
 {% endblock %}

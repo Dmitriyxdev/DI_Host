@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="140" height="80" viewBox="0 0 140 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Letter D - modular cloud container design -->
+  <g filter="url(#glow)">
+    <!-- D outer frame -->
+    <path d="M10 10 L10 70 L40 70 L55 55 L55 25 L40 10 Z" fill="none" stroke="#D1D5DB" stroke-width="2.5"/>
+    
+    <!-- D segments - modular blocks -->
+    <rect x="13" y="13" width="12" height="12" fill="#9CA3AF" opacity="0.8"/>
+    <rect x="13" y="28" width="12" height="12" fill="#D1D5DB"/>
+    <rect x="13" y="43" width="12" height="12" fill="#D1D5DB"/>
+    <rect x="13" y="58" width="12" height="9" fill="#6B7280" opacity="0.9"/>
+    
+    <!-- D right segments -->
+    <rect x="28" y="13" width="12" height="12" fill="#D1D5DB"/>
+    <rect x="43" y="28" width="9" height="12" fill="#9CA3AF" opacity="0.7"/>
+    <rect x="43" y="43" width="9" height="12" fill="#D1D5DB"/>
+    <rect x="28" y="58" width="12" height="9" fill="#D1D5DB"/>
+  </g>
+
+  <!-- Data flow lines between D and I -->
+  <g opacity="0.4">
+    <line x1="55" y1="25" x2="70" y2="20" stroke="#9CA3AF" stroke-width="1" stroke-dasharray="2,2">
+      <animate attributeName="stroke-dashoffset" from="0" to="4" dur="1s" repeatCount="indefinite"/>
+    </line>
+    <line x1="55" y1="40" x2="70" y2="40" stroke="#9CA3AF" stroke-width="1" stroke-dasharray="2,2">
+      <animate attributeName="stroke-dashoffset" from="0" to="4" dur="1.2s" repeatCount="indefinite"/>
+    </line>
+    <line x1="55" y1="55" x2="70" y2="60" stroke="#9CA3AF" stroke-width="1" stroke-dasharray="2,2">
+      <animate attributeName="stroke-dashoffset" from="0" to="4" dur="0.8s" repeatCount="indefinite"/>
+    </line>
+  </g>
+
+  <!-- Letter I - server/node vertical structure -->
+  <g filter="url(#glow)">
+    <!-- I vertical segments - server racks -->
+    <rect x="75" y="10" width="20" height="10" fill="#D1D5DB"/>
+    <rect x="75" y="22" width="20" height="2" fill="#6B7280" opacity="0.6"/>
+    <rect x="75" y="26" width="20" height="10" fill="#D1D5DB"/>
+    <rect x="75" y="38" width="20" height="2" fill="#9CA3AF" opacity="0.9"/>
+    <rect x="75" y="42" width="20" height="10" fill="#9CA3AF" opacity="0.8"/>
+    <rect x="75" y="54" width="20" height="2" fill="#6B7280" opacity="0.7"/>
+    <rect x="75" y="58" width="20" height="12" fill="#D1D5DB"/>
+    
+    <!-- I connection points -->
+    <circle cx="77" cy="15" r="1.5" fill="#9CA3AF"/>
+    <circle cx="93" cy="15" r="1.5" fill="#9CA3AF"/>
+    <circle cx="77" cy="47" r="1.5" fill="#9CA3AF"/>
+    <circle cx="93" cy="47" r="1.5" fill="#9CA3AF"/>
+  </g>
+
+  <!-- Network nodes -->
+  <g opacity="0.3">
+    <circle cx="10" cy="10" r="1.5" fill="#9CA3AF"/>
+    <circle cx="55" cy="25" r="1.5" fill="#9CA3AF"/>
+    <circle cx="55" cy="55" r="1.5" fill="#9CA3AF"/>
+    <circle cx="95" cy="70" r="1.5" fill="#9CA3AF"/>
+  </g>
+
+  <!-- Subtle top connection line -->
+  <line x1="40" y1="10" x2="75" y2="10" stroke="#9CA3AF" stroke-width="0.5" opacity="0.2"/>
+</svg>

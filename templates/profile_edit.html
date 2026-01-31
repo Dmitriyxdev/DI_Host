@@ -2,70 +2,39 @@
 {% block title %}Редактировать профиль{% endblock %}
 
 {% block content %}
-<div class="grid">
-  <section class="card" style="grid-column: 1 / -1; max-width:640px;">
-    <div class="card-title-row">
-      <h2>Редактирование профиля</h2>
-      <span class="badge">edit</span>
-    </div>
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-8">
+      <div class="card border-0 shadow-sm">
+        <div class="card-body p-4">
+          <div class="d-flex justify-content-between align-items-center gap-2 mb-3">
+            <div>
+              <h1 class="h5 mb-1">Редактирование профиля</h1>
+              <div class="text-muted">Измени имя и логин</div>
+            </div>
+            <span class="badge text-bg-dark">edit</span>
+          </div>
 
-    {% with messages = get_flashed_messages(with_categories=true) %}
-      {% if messages %}
-        <div class="flash">
-          {% for cat, msg in messages %}
-            <div class="flash-item {% if cat=='ok' %}flash-ok{% endif %}">{{ msg }}</div>
-          {% endfor %}
-        </div>
-      {% endif %}
-    {% endwith %}
+          <form method="post" action="{{ url_for('profile_edit_post') }}">
+            <div class="mb-3">
+              <label class="form-label">Отображаемое имя</label>
+              <input name="display_name" type="text" class="form-control" value="{{ user.display_name or '' }}" maxlength="40">
+              <div class="form-text">До 40 символов.</div>
+            </div>
 
-    <form method="post" action="{{ url_for('profile_edit_post') }}">
-      <div class="form-col">
-        <label class="field">
-  <span class="field-label">Ваше Имя:</span>
-  <input
-    name="display_name"
-    type="text"
-    value="{{ user.display_name or '' }}"
-    maxlength="40"
-    autocomplete="name"
-    placeholder="Например: Андрей"
-  />
-</label>
+            <div class="mb-3">
+              <label class="form-label">Логин</label>
+              <input name="username" type="text" class="form-control" value="{{ user.username }}" minlength="3" maxlength="20" required>
+              <div class="form-text">3–20 символов.</div>
+            </div>
 
-        
-        <label class="field">
-          <span class="field-label">Логин</span>
-          <input name="username" type="text" value="{{ user.username }}" minlength="3" maxlength="20" required />
-        </label>
+            <div class="d-flex flex-column flex-md-row gap-2">
+              <button class="btn btn-primary" type="submit">Сохранить</button>
+              <a class="btn btn-outline-secondary" href="{{ url_for('profile') }}">Отмена</a>
+            </div>
+          </form>
 
-        <hr class="sep" />
-
-        <div class="muted" style="font-size:13px;">
-          Смена пароля (необязательно)
-        </div>
-
-        <label class="field">
-          <span class="field-label">Текущий пароль</span>
-          <input name="current_password" type="password" autocomplete="current-password" />
-        </label>
-
-        <label class="field">
-          <span class="field-label">Новый пароль</span>
-          <input name="new_password" type="password" autocomplete="new-password" minlength="6" />
-        </label>
-
-        <label class="field">
-          <span class="field-label">Повтор нового пароля</span>
-          <input name="new_password2" type="password" autocomplete="new-password" minlength="6" />
-        </label>
-
-        <div class="form-actions">
-          <a class="btn-link" href="{{ url_for('profile') }}">Отмена</a>
-          <button type="submit">Сохранить</button>
         </div>
       </div>
-    </form>
-  </section>
-</div>
+    </div>
+  </div>
 {% endblock %}

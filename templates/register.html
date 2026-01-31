@@ -2,34 +2,28 @@
 {% block title %}Регистрация{% endblock %}
 
 {% block content %}
-<section class="card auth-card">
-  <div class="card-title-row">
-    <h2>Регистрация</h2>
-    <span class="badge">auth</span>
+  <div class="d-flex align-items-center justify-content-between mb-3">
+    <h1 class="h5 mb-0">Регистрация</h1>
+    <span class="badge text-bg-dark">auth</span>
   </div>
 
-  {% with messages = get_flashed_messages(with_categories=true) %}
-    {% if messages %}
-      <div class="flash">
-        {% for cat, msg in messages %}
-          <div class="flash-item">{{ msg }}</div>
-        {% endfor %}
-      </div>
-    {% endif %}
-  {% endwith %}
-
   <form method="post" action="{{ url_for('register_post') }}">
-    <div class="form-col">
-      <input name="username" type="text" placeholder="Логин (3–20)" autocomplete="username" minlength="3" maxlength="20" required />
-      <input name="password" type="password" placeholder="Пароль (мин. 6)" autocomplete="new-password" minlength="6" required />
-      <input name="password2" type="password" placeholder="Повтор пароля" autocomplete="new-password" minlength="6" required />
-      <button type="submit">Создать аккаунт</button>
+    <div class="mb-3">
+      <label class="form-label">Логин</label>
+      <input name="username" type="text" class="form-control" autocomplete="username" required>
+      <div class="form-text">3–20 символов.</div>
     </div>
+
+    <div class="mb-3">
+      <label class="form-label">Пароль</label>
+      <input name="password" type="password" class="form-control" autocomplete="new-password" required>
+    </div>
+
+    <button type="submit" class="btn btn-success w-100">Создать аккаунт</button>
   </form>
 
-  <p class="muted auth-link">
-    Уже есть аккаунт?
-    <a href="{{ url_for('login') }}" class="auth-a">Войти</a>
-  </p>
-</section>
+  <div class="text-center mt-3">
+    <span class="text-muted">Уже есть аккаунт?</span>
+    <a href="{{ url_for('login') }}" class="link-primary">Войти</a>
+  </div>
 {% endblock %}

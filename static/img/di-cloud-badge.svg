@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="280" height="100" viewBox="0 0 280 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="280" height="100" rx="8" fill="#030712"/>
+  <rect x="0.5" y="0.5" width="279" height="99" rx="7.5" stroke="#1F2937"/>
+  
+  <!-- Logo -->
+  <g transform="translate(20, 25)">
+    <!-- D outer frame -->
+    <path d="M3.5 3.5 L3.5 24.5 L14 24.5 L19.25 19.25 L19.25 8.75 L14 3.5 Z" fill="none" stroke="#D1D5DB" stroke-width="0.875"/>
+    
+    <!-- D segments -->
+    <rect x="4.55" y="4.55" width="4.2" height="4.2" fill="#9CA3AF" opacity="0.8"/>
+    <rect x="4.55" y="9.8" width="4.2" height="4.2" fill="#D1D5DB"/>
+    <rect x="4.55" y="15.05" width="4.2" height="4.2" fill="#D1D5DB"/>
+    <rect x="4.55" y="20.3" width="4.2" height="3.15" fill="#6B7280" opacity="0.9"/>
+    
+    <rect x="9.8" y="4.55" width="4.2" height="4.2" fill="#D1D5DB"/>
+    <rect x="15.05" y="9.8" width="3.15" height="4.2" fill="#9CA3AF" opacity="0.7"/>
+    <rect x="15.05" y="15.05" width="3.15" height="4.2" fill="#D1D5DB"/>
+    <rect x="9.8" y="20.3" width="4.2" height="3.15" fill="#D1D5DB"/>
+    
+    <!-- I segments -->
+    <rect x="26.25" y="3.5" width="7" height="3.5" fill="#D1D5DB"/>
+    <rect x="26.25" y="7.7" width="7" height="0.7" fill="#6B7280" opacity="0.6"/>
+    <rect x="26.25" y="9.1" width="7" height="3.5" fill="#D1D5DB"/>
+    <rect x="26.25" y="13.3" width="7" height="0.7" fill="#9CA3AF" opacity="0.9"/>
+    <rect x="26.25" y="14.7" width="7" height="3.5" fill="#9CA3AF" opacity="0.8"/>
+    <rect x="26.25" y="18.9" width="7" height="0.7" fill="#6B7280" opacity="0.7"/>
+    <rect x="26.25" y="20.3" width="7" height="4.2" fill="#D1D5DB"/>
+    
+    <!-- Connection points -->
+    <circle cx="26.95" cy="5.25" r="0.525" fill="#9CA3AF"/>
+    <circle cx="32.55" cy="5.25" r="0.525" fill="#9CA3AF"/>
+    <circle cx="26.95" cy="16.45" r="0.525" fill="#9CA3AF"/>
+    <circle cx="32.55" cy="16.45" r="0.525" fill="#9CA3AF"/>
+  </g>
+  
+  <!-- Divider -->
+  <line x1="80" y1="30" x2="80" y2="70" stroke="#1F2937" stroke-width="1"/>
+  
+  <!-- Text -->
+  <text x="95" y="42" fill="#6B7280" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="400">Powered by</text>
+  <text x="95" y="62" fill="#FFFFFF" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="600">DI Cloud</text>
+</svg>
